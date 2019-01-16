@@ -39,7 +39,7 @@ class ProductRequest extends FormRequest
                     ->where('size', $this->input('size'))
                     ->where('price', $this->input('price'))
             ],
-            'productType' => 'required|max:20',
+            'product_type' => 'required|max:20',
             'size'        => 'required|max:20',
             'price'       => 'required|numeric|max:10000'
         ];
@@ -53,10 +53,10 @@ class ProductRequest extends FormRequest
     public function messages()
     {
         return [
-            'color.unique'  => 'Color, size and price must be unique',
+            'color.unique'  => 'Color, size and price fields combination must be unique',
             'price.max'     => 'Price limit is 10000',
             '*.max'         => 'Length limit is 20 chars',
-            '*.required'    => 'productType, color, size and price fields are required',
+            '*.required'    => 'Fields is required',
             'price|numeric' => 'Price field must be numeric',
         ];
     }
