@@ -18,3 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('products', 'ProductController@store');
+
+Route::get('orderDrafts', 'OrderDraftController@index');
+
+Route::get('orderDrafts/{productType}', 'OrderDraftController@show');
