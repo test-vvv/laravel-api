@@ -10,6 +10,6 @@ class Product extends Model
 
     public function orderDraftItems()
     {
-        $this->hasMany('App\OrderDraftItems');
+        return $this->hasMany('App\OrderDraftItem');
     }
 }
