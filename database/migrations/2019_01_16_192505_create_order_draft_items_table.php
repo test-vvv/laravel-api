@@ -19,10 +19,11 @@ class CreateOrderDraftItemsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('order_draft_id');
             $table->unsignedInteger('product_id');
-            $table->foreign('order_draft_id')->references('id')->on('order_drafts');
-            $table->foreign('product_id')->references('id')->on('products');
             $table->integer('qty');
             $table->timestamps();
+
+            $table->foreign('order_draft_id')->references('id')->on('order_drafts')->onDelete('cascade');
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');;
         });
     }
 

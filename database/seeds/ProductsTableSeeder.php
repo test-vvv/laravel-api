@@ -22,7 +22,7 @@ class ProductsTableSeeder extends Seeder
                 'product_type' => $faker->randomElement($array = ['Tablet','Phone','Desktop','Notebook']),
                 'color'        => $faker->safeColorName,
                 'size'         => $faker->word,
-                'price'        => $faker->randomFloat($nbMaxDecimals = 2, $min = 0.01, $max = 100)
+                'price'        => $faker->randomFloat($nbMaxDecimals = 2, $min = 0.01, $max = 10)
             ]);
         }
     }
