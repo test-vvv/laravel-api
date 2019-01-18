@@ -15,15 +15,20 @@ class OrderDraftController extends Controller
         foreach ($drafts as $draft) {
             $id = $draft->getKey();
             $items = OrderDraft::getItemsByOrderDraftId($id);
-            $result[$id] = $items;
+            $result[] = [
+                'draft_order_id' => $id,
+                'country_code'   => $draft->getAttribute('country_code'),
+                 $id             => $items
+                ];
+
         }
 
         return ['data' => $result];
     }
 
-    public function show($id)
+    public function show($productType)
     {
-        return OrderDraft::getItemsByOrderDraftId($id);
+        return OrderDraft::getItemsByOrderDraftId(1);
     }
 
 
