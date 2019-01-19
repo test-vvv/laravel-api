@@ -47,6 +47,13 @@ tests:
 Issue:
 Check your Homestead.yaml file, the path to your private key does not exist.
 
-# touch ~/.ssh/id_rsa
+touch ~/.ssh/id_rsa
+
+issue:
+ash: line 5: /sbin/ifdown: No such file or directory
+bash: line 19: /sbin/ifup: No such file or directory
+
+vagrant ssh
+apt-get install ifupdown
 
 
