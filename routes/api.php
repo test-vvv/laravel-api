@@ -24,3 +24,5 @@ Route::get('orderDrafts', 'OrderDraftController@index');
 Route::get('orderDrafts/{productType}', 'OrderDraftController@show');
 
 Route::get('orderDraft/calculate', 'OrderDraftController@calculate')->middleware("throttle.country:1,0.017");
+
+Route::get('orderDraft/test', 'OrderDraftController@test')->middleware("throttle.country:1,0.017");
