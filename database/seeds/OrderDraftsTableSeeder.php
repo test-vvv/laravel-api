@@ -17,9 +17,10 @@ class OrderDraftsTableSeeder extends Seeder
 
         $faker = Factory::create();
 
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 3; $i++) {
             OrderDraft::create([
                 'country_code' => $faker->randomElement($array = ['US','DE','GB','AF'])
             ]);
-        }    }
+        }
+    }
 }

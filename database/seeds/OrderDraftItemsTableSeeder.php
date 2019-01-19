@@ -17,11 +17,29 @@ class OrderDraftItemsTableSeeder extends Seeder
 
         $faker = Factory::create();
 
-        for ($i = 0; $i < 20; $i++) {
             OrderDraftItem::create([
-                'order_draft_id' => $faker->numberBetween(1, 10),
-                'product_id'     => $faker->numberBetween(1, 10),
-                'qty'            => $faker->numberBetween(1, 10)
+                'order_draft_id' => 1,
+                'product_id'     => 1,
+                'qty'            => 1
             ]);
-        }    }
+
+            OrderDraftItem::create([
+                'order_draft_id' => 2,
+                'product_id'     => 2,
+                'qty'            => 5
+            ]);
+
+            OrderDraftItem::create([
+                'order_draft_id' => 2,
+                'product_id'     => 1,
+                'qty'            => 1
+            ]);
+
+            OrderDraftItem::create([
+                'order_draft_id' => 3,
+                'product_id'     => 5,
+                'qty'            => 6
+            ]);
+    }
+
 }
