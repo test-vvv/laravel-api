@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class OrderDraftItem extends Model
 {
+    protected $fillable = ['order_draft_id', 'product_id', 'qty'];
     protected $hidden = ['id', 'created_at', 'updated_at', 'order_draft_id', 'product_id'];
 
     public function orderDraft()

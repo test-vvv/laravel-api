@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\OrderDraftRequest;
 use App\OrderDraft;
 use App\OrderDraftItem;
+use App\Product;
+use http\Env\Response;
 use Illuminate\Http\Request;
 
 class OrderDraftController extends Controller
@@ -26,6 +29,21 @@ class OrderDraftController extends Controller
         return $this->buildDraftsView($drafts);
     }
 
+    public function calculate(OrderDraftRequest $request)
+    {
+        $total = $this->getTotalPrice($request);
+
+        if ($total < 10) {
+            return response()->json([
+                'error' => 'Total price is too low'
+            ]);
+        }
+
+        $draftId = OrderDraft::create()->getKey();
+        $this->saveOrderDraft($request->input('data.products'), $draftId);
+
+        return $total;
+    }
 
     public function store(Request $request)
     {
@@ -47,4 +65,27 @@ class OrderDraftController extends Controller
 
         return ['data' => $result];
     }
+
+    private function getTotalPrice($request)
+    {
+        $result = 0.00;
+
+        foreach ($request->input('data.products') as $product) {
+            $result += Product::whereKey($product['product_id'])->value('price') * $product['qty'];
+        }
+
+        return $result;
+    }
+
+    private function saveOrderDraft($products, $draftId)
+    {
+        foreach ($products as $product) {
+            OrderDraftItem::create([
+                'order_draft_id' => $draftId,
+                'product_id' => $product['product_id'],
+                'qty' => $product['qty']
+            ]);
+        }
+    }
+
 }

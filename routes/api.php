@@ -22,3 +22,5 @@ Route::post('products', 'ProductController@store');
 Route::get('orderDrafts', 'OrderDraftController@index');
 
 Route::get('orderDrafts/{productType}', 'OrderDraftController@show');
+
+Route::get('orderDraft/calculate', 'OrderDraftController@calculate');
