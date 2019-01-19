@@ -6,7 +6,9 @@ use App\Http\Requests\OrderDraftRequest;
 use App\OrderDraft;
 use App\OrderDraftItem;
 use App\Product;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class OrderDraftController extends Controller
 {
@@ -32,10 +34,14 @@ class OrderDraftController extends Controller
     {
         $total = $this->getTotalPrice($request);
 
+        if($total instanceof JsonResponse) {
+            return $total;
+        }
+
         if ($total < 10) {
             return response()->json([
                 'error' => 'Total price is too low'
-            ]);
+            ], Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 
         $countryCode = geoip($request->ip())->getAttribute('iso_code');
@@ -43,7 +49,11 @@ class OrderDraftController extends Controller
 
         $this->saveOrderDraft($request->input('data.products'), $draftId);
 
-        return $total;
+        return response()->json([
+            'data' => [
+                "Total price" => $total
+            ]
+        ]);
     }
 
     public function store(Request $request)
@@ -72,9 +82,13 @@ class OrderDraftController extends Controller
         $result = 0.00;
 
         foreach ($request->input('data.products') as $product) {
+            if(Product::whereKey($product['product_id'])->count() < 1) {
+                return response()->json([
+                    'error' => "There is no product with such an id: {$product['product_id']}"
+                ], Response::HTTP_UNPROCESSABLE_ENTITY);
+            }
             $result += Product::whereKey($product['product_id'])->value('price') * $product['qty'];
         }
-
         return $result;
     }
 
@@ -87,6 +101,11 @@ class OrderDraftController extends Controller
                 'qty' => $product['qty']
             ]);
         }
+    }
+
+    public function test()
+    {
+        return [];
     }
 
 }
