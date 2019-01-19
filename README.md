@@ -7,17 +7,18 @@ Prerequesite: virtualbox
  192.168.10.10 homestead.test
 
 
-
 clone
-Mac / Linux:
 
+composer install
+
+
+Mac / Linux:
 php vendor/bin/homestead make
 Windows:
 vendor\\bin\\homestead make
 
-composer install
+
 php artisan migrate --seed
-php artisan db:seed
 
 tests:
 ./vendor/bin/phpunit
