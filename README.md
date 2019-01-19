@@ -21,7 +21,7 @@ Windows:
 vendor\\\bin\\\homestead make
 
 
-php artisan migrate --seed
+php artisan migrate:refresh --seed
 
 tests:
 ./vendor/bin/phpunit
