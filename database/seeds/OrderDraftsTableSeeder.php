@@ -19,7 +19,7 @@ class OrderDraftsTableSeeder extends Seeder
 
         for ($i = 0; $i < 10; $i++) {
             OrderDraft::create([
-                'country_code' => $faker->randomElement($array = ['US','DE','LV','AF'])
+                'country_code' => $faker->randomElement($array = ['US','DE','GB','AF'])
             ]);
         }    }
 }

@@ -6,7 +6,6 @@ use App\Http\Requests\OrderDraftRequest;
 use App\OrderDraft;
 use App\OrderDraftItem;
 use App\Product;
-use http\Env\Response;
 use Illuminate\Http\Request;
 
 class OrderDraftController extends Controller
@@ -39,7 +38,9 @@ class OrderDraftController extends Controller
             ]);
         }
 
-        $draftId = OrderDraft::create()->getKey();
+        $countryCode = geoip($request->ip())->getAttribute('iso_code');
+        $draftId = OrderDraft::create(['country_code' => $countryCode])->getKey();
+
         $this->saveOrderDraft($request->input('data.products'), $draftId);
 
         return $total;

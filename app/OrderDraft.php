@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class OrderDraft extends Model
 {
+    protected $fillable = ['country_code'];
+
     public function orderDraftItems()
     {
         return $this->hasMany('App\OrderDraftItem');
