@@ -13,9 +13,12 @@ composer install
 
 
 Mac / Linux:
+
 php vendor/bin/homestead make
+
 Windows:
-vendor\\bin\\homestead make
+
+vendor\\\bin\\\homestead make
 
 
 php artisan migrate --seed
