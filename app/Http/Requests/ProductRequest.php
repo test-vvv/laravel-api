@@ -33,8 +33,6 @@ class ProductRequest extends FormRequest
                 'bail',
                 'required',
                 'max:20',
-                //TODO: Sanitize
-                //TODO: fix price validation issue(1.111)
                 Rule::unique('products', 'color')
                     ->where('size', $this->input('size'))
                     ->where('price', $this->input('price'))
@@ -56,7 +54,7 @@ class ProductRequest extends FormRequest
             'color.unique'  => 'Color, size and price fields combination must be unique',
             'price.max'     => 'Price limit is 10000',
             '*.max'         => 'Length limit is 20 chars',
-            '*.required'    => 'Fields is required',
+            '*.required'    => 'Field is required',
             'price|numeric' => 'Price field must be numeric',
         ];
     }
