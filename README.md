@@ -42,3 +42,11 @@ tests:
 	}
 }
 
+
+
+Issue:
+Check your Homestead.yaml file, the path to your private key does not exist.
+
+# touch ~/.ssh/id_rsa
+
+
