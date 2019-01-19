@@ -54,6 +54,8 @@ ash: line 5: /sbin/ifdown: No such file or directory
 bash: line 19: /sbin/ifup: No such file or directory
 
 vagrant ssh
+
 apt-get install ifupdown
 
+vagrant reload
 
