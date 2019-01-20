@@ -44,7 +44,7 @@ Endpoints:
 Put new product to a DB
 
 Example request data for testing:
-```
+```json
 {
     "color": "1",
     "product_type": "1",
@@ -54,7 +54,7 @@ Example request data for testing:
 ```
 
 Example response:
-```
+```json
 {
     "color": "1",
     "product_type": "1",
@@ -71,7 +71,7 @@ Example response:
 List all order drafts
 
 Example response:
-```
+```json
 {
     "data": [
         {
@@ -171,7 +171,7 @@ Example request:
 api/orderDrafts/Notebook
 
 Example response:
-```
+```json
 {
     "data": [
         {
@@ -235,50 +235,50 @@ Example response:
 Get total price, save order draft in DB
 
 Example request:
-```
+```json
 {
-	"data": {
-		"products": [
-			{
-				"product_id": 1,
-				"qty": 1
-			},
-			{
-				"product_id": 2,
-				"qty": 2
-			}
-		]
-	}
+    "data": {
+	    "products": [
+            {
+                "product_id": 1,
+                "qty": 1
+            },
+            {
+                "product_id": 2,
+                "qty": 2
+            }
+        ]
+    }
 }
 ```
 
 Example response:
-```
+```json
 {
     "error": "Total price is too low"
 }
 ```
 
 Example request:
-```
+```json
 {
-	"data": {
-		"products": [
-			{
-				"product_id": 10,
-				"qty": 1
-			},
-			{
-				"product_id": 2,
-				"qty": 2
-			}
-		]
-	}
+    "data": {
+	    "products": [
+            {
+                "product_id": 1,
+                "qty": 10
+            },
+            {
+                "product_id": 2,
+                "qty": 2
+            }
+        ]
+    }
 }
 ```
 
 Example response:
-```
+```json
 {
     "data": {
         "Total price": 16.18
