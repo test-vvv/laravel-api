@@ -2,29 +2,39 @@
 Small API service
 
 
-Prerequesite: virtualbox
- On Mac and Linux, this file is located at /etc/hosts. On Windows, it is located at  C:\Windows\System32\drivers\etc\hosts
- 192.168.10.10 homestead.test
+Prerequesites:
+---
+#### The stuff that need to be installed:
+1. Virtualbox
+2. Vagrant
+3. Composer
 
+#### Project installation:
+---
+1. clone
+2. composer install
+3. Configure homeastead:
 
-clone
+  Mac / Linux: 
+  >php vendor/bin/homestead make 
+  
+  Windows: 
+  >vendor\\\bin\\\homestead make
 
-composer install
+Open Homestead.yaml and add php version:
+```
+sites:
+    -
+        map: homestead.test
+        to: /home/vagrant/code/public
+        php: "7.2"   // <- set this version to avoid known laravel bug
+```
+4. Run migrations and seed tables:
 
+> php artisan migrate:refresh --seed
 
-Mac / Linux:
-
-php vendor/bin/homestead make
-
-Windows:
-
-vendor\\\bin\\\homestead make
-
-
-php artisan migrate:refresh --seed
-
-tests:
-./vendor/bin/phpunit
+5. Run tests(tests/Feature/):
+> ./vendor/bin/phpunit
 
 
 
