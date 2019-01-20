@@ -29,11 +29,14 @@ sites:
         to: /home/vagrant/code/public
         php: "7.2"   // <- set this version to avoid known laravel bug
 ```
-4. Run migrations and seed tables:
+4. Start VM:
+> vagrant up
+
+5. Run migrations and seed tables:
 
 > php artisan migrate:refresh --seed
 
-5. Run tests(tests/Feature/):
+6. Run tests(tests/Feature/):
 > ./vendor/bin/phpunit
 
 
