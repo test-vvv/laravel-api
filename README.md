@@ -42,7 +42,7 @@ sites:
 
 Endpoints:
 ---
-#### POST: api/products
+#### POST: http://192.168.10.10/api/products
 
 Put new product to a DB
 
@@ -69,7 +69,7 @@ Example response:
 }
 ```
 
-#### GET: api/orderDrafts
+#### GET: http://192.168.10.10/api/orderDrafts
 
 List all order drafts
 
@@ -165,13 +165,13 @@ Example response:
 }
 ```
 
-#### GET: api/orderDrafts/{productType}
+#### GET: http://192.168.10.10/api/orderDrafts/{productType}
 
 List order drafts by product type
 
 Example request:
 
-api/orderDrafts/Notebook
+http://192.168.10.10/api/orderDrafts/Notebook
 
 Example response:
 ```json
@@ -233,7 +233,7 @@ Example response:
 }
 ```
 
-#### GET: api/orderDraft/calculate
+#### GET: http://192.168.10.10/api/orderDraft/calculate
 
 Get total price, save order draft in DB
 
