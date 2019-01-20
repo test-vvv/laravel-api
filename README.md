@@ -321,4 +321,8 @@ exit
 vagrant reload
 ```
 
+Issue: 'Unsupported operand types' https://github.com/laravel/framework/issues/26204
+
+
+Solution: use 7.2 php version in homestead.yaml
 
