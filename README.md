@@ -5,7 +5,7 @@ Small API service
 Prerequesites:
 ---
 #### The stuff needs to be installed:
-1. Virtualbox
+1. Virtualbox (other providers can be set in homestead.yaml, step 3 of installation)
 2. Vagrant
 3. Composer
 
